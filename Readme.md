@@ -1,6 +1,7 @@
-# 🏞️ Offroad Semantic Segmentation & Dashboard
-
+# 🏞️ Segmentia - Offroad Semantic Segmentation  
 > **Powering Autonomous Navigation in Rugged Terrains with Deep Learning and Interactive Visualization.**
+
+![alt text](segmentia.png)
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.0+](https://img.shields.io/badge/pytorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
@@ -20,23 +21,13 @@ This project provides an end-to-end ecosystem for **Offroad Semantic Segmentatio
 - **Insights:** Interactive visual feedback through a modern, glassmorphic web interface.
 
 ---
+### Model Google Drive Link: 
+### Report Link:   
+---
 
 ## 📂 Project Ecosystem
 
-```text
-yolo/
-├── 🧠 offroad_segmentation/   # Machine Learning Core
-│   ├── train.py                # Optimized training loop (AMP, AdamW, Cosine Annealing)
-│   ├── dataset.py              # Advanced augmentations (Grid Distortion, Perspective)
-│   ├── utils.py                # Hybrid Dice + CE Loss + Performance Metrics
-│   └── evaluate.py             # Per-class IoU analysis & Latency Profiling
-├── 🌐 web/                     # Visual Experience (Dashboard)
-│   ├── src/                    # React components, Three.js 3D Engine, & Hooks
-│   ├── tailwind.config.js      # Premium Glassmorphic Design System
-│   └── vite.config.js          # Ultra-fast development server
-└── 📊 data/                    # Dataset (Images & Fine-grained Masks)
-```
-
+![alt text](structure.png)
 ---
 
 ## 🚀 Quick Start
@@ -150,4 +141,10 @@ python -m offroad_segmentation.evaluate
 
 ---
 
-Developed with ❤️ for **Autonomous Robotics Research**.
+Developed with **Segmentia**
+Team Credentials
+- Sarthak Tulsidas Patil
+- Abdullah Munawar Khan
+- Ganesh Bhaktaraj Beldar
+
+![alt text](Graphics.png)
