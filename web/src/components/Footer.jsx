@@ -49,7 +49,9 @@ export default function Footer() {
                 </a>
                 <a
                   className="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors"
-                  href="#github"
+                  href="https://github.com/Precise-Goals/Segmentia"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   GitHub
                 </a>

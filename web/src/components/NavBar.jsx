@@ -61,16 +61,16 @@ export default function NavBar() {
               Team
             </a>
           </div>
-<div className="flex items-center gap-6">
-<button className="hover:bg-white/5 transition-all duration-200 p-2 rounded">
-<MdTerminal className="text-[#FF4500] text-lg" />
-</button>
-<button className="bg-primary-container text-on-primary-container px-5 py-2 rounded-sm font-headline text-[10px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all">
-                Launch Console
-            </button>
-</div>
-</div>
-</nav>
+          <a
+            href="https://github.com/Precise-Goals/Segmentia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-container text-on-primary-container px-5 py-2 rounded-sm font-headline text-[10px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all inline-block"
+          >
+            Launch Console
+          </a>
+        </div>
+      </nav>
     </>
   );
 }
