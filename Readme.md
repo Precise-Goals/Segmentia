@@ -99,6 +99,22 @@ For optimal results, ensure your data follows this structure:
 
 ---
 
+## 📊 Results & Visualization
+
+### 🖼️ Model Performance
+Below are the results from our latest training runs, demonstrating the model's ability to generalize across diverse offroad terrains.
+
+![Confusion Matrix](offroad_segmentation/confusion_matrix.png)
+*Figure 1: Confusion Matrix showing per-class accuracy and inter-class confusion (e.g., Dirt vs. Mud).*
+
+![Trial Results](offroad_segmentation/trial_results.png)
+*Figure 2: Training and Validation metrics across 50 epochs, highlighting mIoU and Loss convergence.*
+
+![Segmentation Visualization](offroad_segmentation/visualize_results.png)
+*Figure 3: Side-by-side comparison of Raw Input, Ground Truth Mask, and AI-Generated Prediction.*
+
+---
+
 ## 📉 Milestones
 
 | Phase | Target mIoU | Status | Technical Highlight |
