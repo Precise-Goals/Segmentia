@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Segmentia | Precision Autonomy</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#839493",
+                    "on-surface": "#e5e2e1",
+                    "on-secondary": "#313030",
+                    "tertiary-fixed": "#d4e6e5",
+                    "surface-container-highest": "#353534",
+                    "surface-dim": "#131313",
+                    "surface-variant": "#353534",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "on-primary-container": "#541100",
+                    "surface-tint": "#ffb5a0",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-primary": "#601400",
+                    "secondary-fixed": "#e5e2e1",
+                    "inverse-on-surface": "#313030",
+                    "primary": "#ffb5a0",
+                    "on-secondary-container": "#bab8b7",
+                    "outline-variant": "#5d4038",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container": "#201f1f",
+                    "secondary-container": "#4a4949",
+                    "surface-container-low": "#1c1b1b",
+                    "secondary": "#c8c6c5",
+                    "on-surface-variant": "#e7bdb2",
+                    "on-tertiary": "#233333",
+                    "background": "#131313",
+                    "outline": "#ad887e",
+                    "on-tertiary-fixed": "#0e1e1e",
+                    "primary-fixed": "#ffdbd1",
+                    "tertiary-fixed-dim": "#b8cac9",
+                    "primary-fixed-dim": "#ffb5a0",
+                    "on-tertiary-container": "#1d2c2c",
+                    "on-secondary-fixed-variant": "#474646",
+                    "surface": "#131313",
+                    "error-container": "#93000a",
+                    "primary-container": "#ff5625",
+                    "surface-bright": "#3a3939",
+                    "on-tertiary-fixed-variant": "#3a4a49",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#b12d00",
+                    "on-error": "#690005",
+                    "tertiary": "#b8cac9",
+                    "error": "#ffb4ab",
+                    "surface-container-high": "#2a2a2a",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-fixed": "#3b0900",
+                    "on-primary-fixed-variant": "#872000",
+                    "on-background": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["Roboto Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grid-bg {
+            background-image: radial-gradient(circle at 1px 1px, #ffffff10 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .topo-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q 200 50 400 100 T 800 100' fill='none' stroke='%23ff450015' stroke-width='1'/%3E%3Cpath d='M0 200 Q 200 150 400 200 T 800 200' fill='none' stroke='%23ff450010' stroke-width='1'/%3E%3Cpath d='M0 300 Q 200 250 400 300 T 800 300' fill='none' stroke='%23ff450005' stroke-width='1'/%3E%3C/svg%3E");
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary-container selection:text-white">
+<!-- Minimalist TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#050505]/60 backdrop-blur-md border-b border-white/5">
+<div class="flex justify-between items-center max-w-[1440px] mx-auto px-8 h-16">
+<div class="text-2xl font-black tracking-tighter text-[#FF4500] font-headline">Segmentia</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-mono tracking-widest uppercase text-[10px] font-bold text-[#FF4500]" href="#">Solutions</a>
+<a class="font-mono tracking-widest uppercase text-[10px] font-bold text-zinc-500 hover:text-white transition-colors" href="#">Architecture</a>
+<a class="font-mono tracking-widest uppercase text-[10px] font-bold text-zinc-500 hover:text-white transition-colors" href="#">Markets</a>
+<a class="font-mono tracking-widest uppercase text-[10px] font-bold text-zinc-500 hover:text-white transition-colors" href="#">Mission Logs</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="hover:bg-white/5 transition-all duration-200 p-2 rounded">
+<span class="material-symbols-outlined text-[#FF4500] text-lg">terminal</span>
+</button>
+<button class="bg-primary-container text-on-primary-container px-5 py-2 rounded-sm font-headline text-[10px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all">
+                Launch Console
+            </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center justify-center pt-24 overflow-hidden topo-bg">
+<div class="absolute inset-0 bg-gradient-to-b from-[#FF450008] via-transparent to-transparent"></div>
+<div class="container mx-auto px-8 text-center relative z-10 max-w-5xl">
+<div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/20 mb-12">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-mono text-[9px] uppercase tracking-[0.3em] text-tertiary">Interplanetary Expansion Active // V.04</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-10 text-on-surface">
+            NAVIGATING THE <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-primary italic">UNCHARTED</span>
+</h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant font-light text-xl mb-14 leading-relaxed opacity-80">
+            Precision semantic autonomy for the next frontier. From terrestrial wilderness to the Martian regolith, we provide the vision for autonomous expansion.
+        </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+<button class="w-full sm:w-auto bg-primary-container hover:bg-primary-container/90 text-on-primary-container px-12 py-5 rounded-sm font-headline font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-4 group">
+                Deploy Payload 
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">rocket_launch</span>
+</button>
+<button class="w-full sm:w-auto border border-outline-variant/30 hover:bg-white/5 text-on-surface px-12 py-5 rounded-sm font-headline font-bold uppercase tracking-widest transition-all">
+                System Specs
+            </button>
+</div>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+<span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- The Edge of the Map: Surgical Precision Approach -->
+<section class="py-40 bg-[#080808] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary-container/5 blur-[120px] rounded-full -translate-y-1/2"></div>
+<div class="container mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+<div class="sticky top-32">
+<div class="font-mono text-primary text-xs tracking-[0.4em] uppercase mb-6">Strategy // Phase 01</div>
+<h2 class="font-headline text-5xl font-bold tracking-tight mb-8">THE EDGE OF <br/> THE MAP</h2>
+<div class="space-y-6 text-on-surface-variant text-lg leading-relaxed max-w-lg">
+<p>Conventional navigation fails where GPS ends. Our 'Surgical Precision' approach replaces broad estimation with granular, semantic environmental awareness.</p>
+<p class="opacity-60">We define the frontier not by its boundaries, but by the density of the data we can extract from its chaos.</p>
+</div>
+</div>
+<div class="space-y-32">
+<!-- Step 1 -->
+<div class="relative pl-16 border-l border-primary-container/30">
+<div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-primary-container flex items-center justify-center font-mono text-[10px] text-white font-bold">1</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Data Acquisition</h3>
+<p class="text-zinc-400 mb-8 leading-relaxed">Fusing synthetic simulation with high-fidelity real-world captures. We utilize the 'Duality AI Challenge' framework to generate millions of edge-case scenarios—from dust storms to canopy occlusions—ensuring 100% terrain coverage before physical deployment.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-4 rounded">
+<div class="text-[10px] font-mono text-primary uppercase mb-2">Synthetic</div>
+<div class="text-xs text-zinc-500">14.2M Samples</div>
+</div>
+<div class="glass-panel p-4 rounded">
+<div class="text-[10px] font-mono text-primary uppercase mb-2">In-Situ</div>
+<div class="text-xs text-zinc-500">850k Terrain Logs</div>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-16 border-l border-primary-container/30">
+<div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-primary-container flex items-center justify-center font-mono text-[10px] text-white font-bold">2</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Model Training</h3>
+<p class="text-zinc-400 mb-6 leading-relaxed">Our models undergo rigorous optimization cycles using distributed GPU clusters. We prioritize semantic segmentation accuracy over raw throughput, achieving surgical pixel-level precision for critical pathfinding.</p>
+<ul class="space-y-3 font-mono text-[11px] text-zinc-500 uppercase tracking-widest">
+<li class="flex items-center gap-3"><span class="w-1 h-1 bg-primary"></span> Cross-Entropy Loss Optimization</li>
+<li class="flex items-center gap-3"><span class="w-1 h-1 bg-primary"></span> Jaccard Index Refinement</li>
+<li class="flex items-center gap-3"><span class="w-1 h-1 bg-primary"></span> Gradient Descent Tuning</li>
+</ul>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-16 border-l border-primary-container/30">
+<div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-primary-container flex items-center justify-center font-mono text-[10px] text-white font-bold">3</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Edge Deployment</h3>
+<p class="text-zinc-400 leading-relaxed">Compressed weights optimized for RISC-V and ARM-based aerospace processors. Zero-latency inference allows rovers to make split-second decisions without earth-relay dependency.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Telemetry Section -->
+<section class="py-40 bg-surface-dim grid-bg">
+<div class="container mx-auto px-8">
+<div class="mb-20 border-l-2 border-primary-container pl-10 max-w-2xl">
+<h2 class="font-headline text-4xl font-bold tracking-tight">REAL-TIME TELEMETRY</h2>
+<p class="font-mono text-xs uppercase tracking-[0.4em] text-tertiary mt-4">Instrument 04 // Martian Surface Probe // Latency: 14ms</p>
+</div>
+<div class="relative rounded-sm overflow-hidden aspect-[21/9] bg-surface-container-lowest border border-outline-variant/10 shadow-[0_0_100px_rgba(255,69,0,0.1)]">
+<model-viewer src="/model.glb" camera-controls auto-rotate shadow-intensity="1" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"></model-viewer>
+<!-- HUD Overlays -->
+<div class="absolute inset-0 pointer-events-none p-12 font-mono">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-2">
+<div class="bg-primary-container text-white px-3 py-1 text-[9px] font-bold tracking-widest">SCANNING_LASER_ACTIVE</div>
+<div class="text-[10px] text-zinc-400 bg-black/40 px-2 py-1">COORD_V: 18.4429 // COORD_H: -77.4510</div>
+</div>
+<div class="text-right">
+<div class="text-xs text-primary font-bold animate-pulse">SIGNAL LOCK: 100%</div>
+<div class="text-[10px] text-zinc-500 mt-1 uppercase">Relay: MRO-ALPHA-NINER</div>
+</div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-32 h-32 border border-primary-container/20 rounded-full flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-primary-container"></div>
+<div class="absolute w-12 h-px bg-primary-container/40 -left-6"></div>
+<div class="absolute w-12 h-px bg-primary-container/40 -right-6"></div>
+<div class="absolute h-12 w-px bg-primary-container/40 -top-6"></div>
+<div class="absolute h-12 w-px bg-primary-container/40 -bottom-6"></div>
+</div>
+</div>
+<div class="absolute bottom-12 left-12 right-12 flex justify-between items-end">
+<div class="flex gap-6">
+<div class="glass-panel p-5 min-w-[120px]">
+<div class="text-[9px] text-zinc-500 uppercase tracking-widest mb-1">Incline</div>
+<div class="text-2xl text-on-surface">12.4°</div>
+</div>
+<div class="glass-panel p-5 min-w-[200px] border-l-4 border-l-[#FF4500]">
+<div class="text-[9px] text-[#FF4500] uppercase tracking-widest mb-1">Status</div>
+<div class="text-xl text-on-surface">OBSTACLE_AVOIDED</div>
+</div>
+</div>
+<div class="glass-panel p-5 text-right">
+<div class="text-[9px] text-zinc-500 uppercase tracking-widest mb-1">Location</div>
+<div class="text-sm text-on-surface">JEZERO CRATER BASIN</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dual-Terrain Bento Grid -->
+<section class="py-40 bg-surface-container-low">
+<div class="container mx-auto px-8">
+<div class="text-center mb-24 max-w-3xl mx-auto">
+<h2 class="font-headline text-5xl font-bold tracking-tight mb-6">TRANS-PLANETARY ANALYSIS</h2>
+<p class="text-zinc-500 leading-relaxed font-light">Cross-platform validation ensuring our models remain resilient regardless of the atmosphere or illumination. Geography is just data.</p>
+<div class="w-16 h-1 bg-primary-container mx-auto mt-8"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Earth Card Large -->
+<div class="md:col-span-2 relative h-[600px] rounded-sm overflow-hidden group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" data-alt="Dense green forest with sunlight filtering through leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpyCyG35hrzzwP2qtTr7O7yLApUhZGL17YMjY8zjyVFjuejX2htWdz7-WtX_P3TGdcVlbafVzR55abP63QTc_PzDNaZPNZtul_9EpU9OyOKLK-fNgrUK3IwZ4oVW3UXrNhz3Cl6d6RlurJjkpYnugehrX4JFKjV8xTg4f7UrkaR9-7Men6zHrtwVODBk8t3Poomk88pzbCB4y20Yi7MuS5K-AgPt2JBYLCwzY71_qHksg3Y4mQmORZPEa-ktQEqxa0rq7uzLlMGg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-10 left-10">
+<div class="font-mono text-[9px] text-primary uppercase tracking-[0.4em] mb-3">Origin // Earth</div>
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Dense Biome Logic</h3>
+<p class="font-mono text-[10px] text-zinc-500 mt-4 leading-loose">VARIABLE_VEGETATION // HYDRO_FLUIDITY // CANOPY_NOISE</p>
+</div>
+</div>
+<!-- Martian Card Small 1 -->
+<div class="relative h-[284px] rounded-sm overflow-hidden group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" data-alt="Deep red martian soil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAILJn3X4a8uyxQQHwemVkdmHPH49Hj4cTsHxiRDfeeY04NweOEpLu4I7H0r7f5FRhyhDUMnMTilnR8NeXaTCsxHyhnD_f_tviBhTS2RsS_79orXYsNNNkOFsZg7_QG4QcfNcrKBEL9tHDVQN1VOcQkKYDu0CRZbQ506XHJAE2OZqz-WeoaAJtxEJ0QHRhcg6-XIpC0rOYSkPnmNqYD4XQied2SKzRt0gFZqpTL4fGETy-oYNq9F4gsjIlRYMLTQuK96KSNWpzYdg"/>
+<div class="absolute inset-0 bg-primary-container/10 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="font-headline text-lg font-bold uppercase tracking-widest text-primary">Red Dust</h3>
+</div>
+</div>
+<!-- Martian Card Small 2 -->
+<div class="relative h-[284px] rounded-sm overflow-hidden group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" data-alt="Close up of rocky martian basin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1NnOWxAuDaaGSqM1t_7IAO3imFyxuX5Bn6X9AXFfvE1UOd5Z7UtqR64ANJ3DBs5-6xxXZKDN9v1dlnR_E-w6siwEp4UgjT_Xy3-ehFiJJJ22gGm-RFO_3awHu8mRF4wyd6oZuMQ7xugIdsEpUGD3WFYA0H6hsdJrYHp_8jyvF1G6yk9WpqDY-Q6rLTFZF7AuzLjxgHt4S_SSIsKIDzRr9hG6W4HWwiRb2XvCeucekJGCRxi-5FFCZB7GPTZdMMROafuuiz8HXxw"/>
+<div class="absolute inset-0 bg-primary-container/10 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="font-headline text-lg font-bold uppercase tracking-widest text-primary">Rocky Basins</h3>
+</div>
+</div>
+<!-- Mars Card Large -->
+<div class="md:col-span-2 relative h-[600px] rounded-sm overflow-hidden group md:-mt-[284px]">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" data-alt="Panoramic view of a martian crater" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0gQReevtgI1Ua1IRTOm2uYTW1AnrwpEOISant3XTLlEm3lnGOng9yJykK5eVwUSup5_WLMEQBTNsLxoy6uYc5ZLgxoWplpaQvXUzpy9jeSQ0znPzv1472198QJ8K-u3W6gwt8faPBVPdlmG7TIG8SJaHJZ_g1Nm-TSuJ-0omlWn69j4lBgTx3aG5nczC5rA8jZyi_-21y1FWY8owA-y8NQME0ZV90L9Q6odhCXdSJc-slm6umYxPIHk-NOho6XHWT51Teq714Kw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#310a00] via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-10 left-10">
+<div class="font-mono text-[9px] text-primary uppercase tracking-[0.4em] mb-3">Destination // Mars</div>
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Regolith Dynamics</h3>
+<p class="font-mono text-[10px] text-zinc-400 mt-4 leading-loose">ZERO_ATMOS_VISIBILITY // LITHIC_FRAGMENTS // THERMAL_DRIFT</p>
+</div>
+</div>
+<!-- Earth Card Small -->
+<div class="md:col-span-2 relative h-[284px] rounded-sm overflow-hidden group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" data-alt="High altitude view of earth forest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbG0ypLr6HjGILbLk_mNVLJh1bspiE6hqiceAq57n7DlNtNQ-YPerkCJwLu-Oardh79j3FHmwDo71QVEivSv9R28HN3P34ZXnyq3nl5NdXEZXRRie_5GUUSFuVZxwL-3h5u-UwDLdlSQXjNufWzCN4MSfpL_YFIalVfxVwATkxOuD-b5rf8yoNjg5acnJj2h9D7QMKfqZ0D4DbdVDH5Dc7_hA6UC8-8SNF3UuhW9UoujqhmlsMjEhCEsoqFoFjaskgd5zugFubZQ"/>
+<div class="absolute bottom-6 left-6">
+<h3 class="font-headline text-lg font-bold uppercase tracking-widest">Global Mapping</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Innovation Metrics -->
+<section class="py-40 bg-[#050505] relative overflow-hidden">
+<div class="container mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+<div class="space-y-6 text-center border-b md:border-b-0 md:border-r border-white/5 pb-16 md:pb-0">
+<div class="font-mono text-7xl font-bold text-primary">55.43%</div>
+<div class="font-headline uppercase tracking-[0.3em] text-[10px] font-bold text-zinc-500">Mean intersection over union</div>
+<p class="text-[10px] font-mono text-zinc-600 max-w-[200px] mx-auto">Industry-leading segmentation accuracy in high-clutter environments.</p>
+</div>
+<div class="space-y-6 text-center border-b md:border-b-0 md:border-r border-white/5 pb-16 md:pb-0">
+<div class="font-mono text-7xl font-bold text-on-surface">84.44%</div>
+<div class="font-headline uppercase tracking-[0.3em] text-[10px] font-bold text-zinc-500">Mean Average Precision</div>
+<p class="text-[10px] font-mono text-zinc-600 max-w-[200px] mx-auto">Reliable detection across 10+ distinct terrain classes.</p>
+</div>
+<div class="space-y-6 text-center">
+<div class="font-mono text-7xl font-bold text-primary">14ms</div>
+<div class="font-headline uppercase tracking-[0.3em] text-[10px] font-bold text-zinc-500">Edge Inference Latency</div>
+<p class="text-[10px] font-mono text-zinc-600 max-w-[200px] mx-auto">Real-time processing on radiation-hardened hardware.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Architecture Section: DeepLabV3+ Engine -->
+<section class="py-40 bg-surface-container-lowest topo-bg">
+<div class="container mx-auto px-8">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-24">
+<div class="font-mono text-primary text-[10px] tracking-[0.5em] uppercase mb-4">Core Engine</div>
+<h2 class="font-headline text-5xl font-bold mb-6">DEEPLABV3+ OPTIMIZED</h2>
+<p class="text-zinc-500 max-w-2xl mx-auto leading-relaxed">Our implementation of the DeepLabV3+ architecture is custom-tuned for aerospace edge deployment, balancing multi-scale contextual awareness with compute efficiency.</p>
+</div>
+<div class="relative space-y-16">
+<!-- Diagram Visualizer -->
+<div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-container/40 via-primary-container/20 to-transparent hidden lg:block"></div>
+<!-- ResNet Card -->
+<div class="flex flex-col lg:flex-row items-center gap-12 group">
+<div class="flex-1 text-right order-2 lg:order-1">
+<h3 class="font-headline text-2xl font-bold text-primary mb-3">ResNet-50 Backbone</h3>
+<p class="text-zinc-400 text-sm leading-relaxed max-w-md ml-auto">Feature extractor with deep residual connections. We've implemented 'Weight Quantization' to reduce memory footprint by 75% without sacrificing high-fidelity terrain mapping.</p>
+<div class="mt-4 flex justify-end gap-3">
+<span class="text-[9px] font-mono border border-zinc-700 px-2 py-0.5 text-zinc-500">RESIDUAL_FLOW</span>
+<span class="text-[9px] font-mono border border-zinc-700 px-2 py-0.5 text-zinc-500">INT8_QUANTIZED</span>
+</div>
+</div>
+<div class="z-10 w-12 h-12 rounded-full bg-surface-container-high border-4 border-primary-container/30 flex items-center justify-center font-mono text-xs font-bold order-1 lg:order-2">01</div>
+<div class="flex-1 order-3 hidden lg:block">
+<div class="w-full h-24 glass-panel border-dashed flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-4xl">layers</span>
+</div>
+</div>
+</div>
+<!-- ASPP Card -->
+<div class="flex flex-col lg:flex-row items-center gap-12 group">
+<div class="flex-1 hidden lg:block order-1">
+<div class="w-full h-24 glass-panel border-dashed flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-4xl">view_in_ar</span>
+</div>
+</div>
+<div class="z-10 w-12 h-12 rounded-full bg-surface-container-high border-4 border-primary-container/30 flex items-center justify-center font-mono text-xs font-bold order-2">02</div>
+<div class="flex-1 order-3">
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-3">ASPP Sampler</h3>
+<p class="text-zinc-400 text-sm leading-relaxed max-w-md">Atrous Spatial Pyramid Pooling for multi-scale context sensing. Essential for identifying small rock hazards alongside massive geologic formations simultaneously.</p>
+<div class="mt-4 flex gap-3">
+<span class="text-[9px] font-mono border border-zinc-700 px-2 py-0.5 text-zinc-500">MULTI_SCALE</span>
+<span class="text-[9px] font-mono border border-zinc-700 px-2 py-0.5 text-zinc-500">DILATED_CONV</span>
+</div>
+</div>
+</div>
+<!-- Decoder Card -->
+<div class="flex flex-col lg:flex-row items-center gap-12 group">
+<div class="flex-1 text-right order-2 lg:order-1">
+<h3 class="font-headline text-2xl font-bold text-primary mb-3">Precision Decoder</h3>
+<p class="text-zinc-400 text-sm leading-relaxed max-w-md ml-auto">Final refinement layer producing pixel-perfect boundaries. Our custom skip-connection logic preserves spatial information through the upsampling process.</p>
+<div class="mt-4 flex justify-end gap-3">
+<span class="text-[9px] font-mono border border-zinc-700 px-2 py-0.5 text-zinc-500">BILINEAR_REFINE</span>
+<span class="text-[9px] font-mono border border-zinc-700 px-2 py-0.5 text-zinc-500">LATENCY_ZERO</span>
+</div>
+</div>
+<div class="z-10 w-12 h-12 rounded-full bg-surface-container-high border-4 border-primary-container/30 flex items-center justify-center font-mono text-xs font-bold order-1 lg:order-2">03</div>
+<div class="flex-1 order-3 hidden lg:block">
+<div class="w-full h-24 glass-panel border-dashed flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-4xl">output</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Business & Market Section -->
+<section class="py-40 bg-surface-dim relative border-y border-white/5">
+<div class="container mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div>
+<div class="font-mono text-primary text-[10px] tracking-[0.5em] uppercase mb-4">Strategic Roadmap</div>
+<h2 class="font-headline text-5xl font-bold tracking-tight mb-8">GLOBAL TO <br/> GALACTIC SCALE</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-12 opacity-80">Segmentia isn't just for Mars. Our autonomous vision systems are already disrupting Earth-based industries, providing the blueprint for future interplanetary logistics.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="border-t border-primary-container/30 pt-6">
+<div class="text-3xl font-mono text-white mb-2">$420B</div>
+<div class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Autonomous Mining TAM</div>
+</div>
+<div class="border-t border-primary-container/30 pt-6">
+<div class="text-3xl font-mono text-white mb-2">12M+</div>
+<div class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Hectares Mapped p.a.</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Market Card 1 -->
+<div class="glass-panel p-8 hover:bg-white/[0.05] transition-all cursor-default">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">agriculture</span>
+<div class="text-[9px] font-mono text-zinc-500 uppercase">Sector 01</div>
+</div>
+<h4 class="font-headline text-xl font-bold mb-3 uppercase">Autonomous Agriculture</h4>
+<p class="text-sm text-zinc-400 leading-relaxed">Precision crop segmentation and terrain-aware irrigation in rural Earth environments.</p>
+</div>
+<!-- Market Card 2 -->
+<div class="glass-panel p-8 hover:bg-white/[0.05] transition-all cursor-default">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">precision_manufacturing</span>
+<div class="text-[9px] font-mono text-zinc-500 uppercase">Sector 02</div>
+</div>
+<h4 class="font-headline text-xl font-bold mb-3 uppercase">Resource Extraction</h4>
+<p class="text-sm text-zinc-400 leading-relaxed">Navigating complex mine-shafts and hazardous terrain for mineral recovery on Earth &amp; Asteroids.</p>
+</div>
+<!-- Market Card 3 -->
+<div class="glass-panel p-8 hover:bg-white/[0.05] transition-all cursor-default border-primary-container/20">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">space_dashboard</span>
+<div class="text-[9px] font-mono text-zinc-500 uppercase">Sector 03</div>
+</div>
+<h4 class="font-headline text-xl font-bold mb-3 uppercase">Interplanetary Logistics</h4>
+<p class="text-sm text-zinc-400 leading-relaxed">The backbone of future Martian logistics—autonomous fleet vision for the High Frontier.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission Architects -->
+<section class="py-40 bg-surface-dim">
+<div class="container mx-auto px-8">
+<h2 class="font-headline text-3xl font-bold mb-20 text-zinc-500 uppercase tracking-[0.3em] text-center">Mission Architects</h2>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
+<!-- Architect 1 -->
+<div class="group">
+<div class="aspect-square bg-surface-container-high rounded-sm overflow-hidden mb-8 relative border border-white/5">
+<img class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" data-alt="Sarthak Patil" src="/1.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="font-headline font-bold text-xl mb-1">Sarthak Patil</div>
+<div class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">Architect Engineer</div>
+</div>
+<!-- Architect 2 -->
+<div class="group">
+<div class="aspect-square bg-surface-container-high rounded-sm overflow-hidden mb-8 relative border border-white/5">
+<img class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" data-alt="Abdullah Khan" src="/2.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="font-headline font-bold text-xl mb-1">Abdullah Khan</div>
+<div class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">ML Engineer</div>
+</div>
+<!-- Architect 3 -->
+<div class="group">
+<div class="aspect-square bg-surface-container-high rounded-sm overflow-hidden mb-8 relative border border-white/5">
+<img class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" data-alt="Ganesh Beldar" src="/3.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="font-headline font-bold text-xl mb-1">Ganesh Beldar</div>
+<div class="font-mono text-[10px] text-primary uppercase tracking-[0.2em]">Data Scientist</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#050505] w-full py-20 border-t border-white/5">
+<div class="max-w-[1440px] mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+<div>
+<div class="text-3xl font-black text-white font-headline uppercase tracking-tighter mb-6">Segmentia</div>
+<p class="text-zinc-500 font-mono text-[10px] max-w-xs leading-relaxed uppercase tracking-widest">
+                    Precision Autonomy for the High Frontier. Redefining the limits of autonomous vision.
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-16">
+<div class="space-y-6">
+<div class="font-mono text-[11px] text-white uppercase tracking-[0.2em] mb-8">Technical</div>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">Architecture</a>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">Benchmarks</a>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">GitHub</a>
+</div>
+<div class="space-y-6">
+<div class="font-mono text-[11px] text-white uppercase tracking-[0.2em] mb-8">Markets</div>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">Agriculture</a>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">Aerospace</a>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">Logistics</a>
+</div>
+<div class="space-y-6">
+<div class="font-mono text-[11px] text-white uppercase tracking-[0.2em] mb-8">Company</div>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">Mission</a>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="block font-mono text-[10px] uppercase tracking-widest text-zinc-500 hover:text-primary transition-colors" href="#">HQ</a>
+</div>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="font-mono text-[9px] uppercase tracking-[0.4em] text-zinc-600">
+                © 2024 Segmentia Aerospace. All Telemetry Data Encrypted.
+            </p>
+<div class="flex gap-8">
+<span class="w-1 h-1 bg-primary-container rounded-full"></span>
+<span class="w-1 h-1 bg-primary-container rounded-full"></span>
+<span class="w-1 h-1 bg-primary-container rounded-full"></span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

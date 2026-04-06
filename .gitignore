@@ -1,0 +1,31 @@
+# Datasets
+data/
+
+# Model Checkpoints (Heavy files)
+*.pth
+*.onnx
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+.pth
+model.pth
+model_best.pth
+# Visualization & Results (Keep your repo clean)
+
+figures/
+
+# Environments
+env/
+venv/
+.env
+.venv
+conda_env/
+.venv
+
+# IDE settings
+.vscode/
+.idea/
+.DS_Store
