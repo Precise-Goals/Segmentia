@@ -1,10 +1,63 @@
-import React, { Suspense, useMemo } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { Suspense, useMemo, useState, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment, Center, ContactShadows, Sky, Sparkles, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
+function useWASD() {
+  const [keys, setKeys] = useState({ w: false, a: false, s: false, d: false });
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const key = e.key.toLowerCase();
+      if (['w', 'a', 's', 'd'].includes(key)) {
+        setKeys((k) => ({ ...k, [key]: true }));
+      }
+    };
+    const handleKeyUp = (e) => {
+      const key = e.key.toLowerCase();
+      if (['w', 'a', 's', 'd'].includes(key)) {
+        setKeys((k) => ({ ...k, [key]: false }));
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
+  return keys;
+}
+
 function Model({ url }) {
   const { scene } = useGLTF(url);
+  const keys = useWASD();
+  
+  useFrame((state, delta) => {
+    const moveSpeed = 5 * delta;
+    const rotateSpeed = 2 * delta;
+
+    if (keys.w) scene.translateZ(moveSpeed);
+    if (keys.s) scene.translateZ(-moveSpeed);
+    if (keys.a) scene.rotateY(rotateSpeed);
+    if (keys.d) scene.rotateY(-rotateSpeed);
+
+    // 3rd Person Follow Camera
+    const idealOffset = new THREE.Vector3(0, 4, -12); // Positioned behind and slightly above
+    idealOffset.applyQuaternion(scene.quaternion);
+    idealOffset.add(scene.position);
+
+    const idealLookAt = new THREE.Vector3(0, 0, 5); // Looking slightly ahead of the model
+    idealLookAt.applyQuaternion(scene.quaternion);
+    idealLookAt.add(scene.position);
+
+    // Smoothly transition the camera position and rotation
+    state.camera.position.lerp(idealOffset, 5 * delta);
+    state.camera.lookAt(idealLookAt);
+  });
   
   // Enable shadows for the model's children
   useMemo(() => {
@@ -104,15 +157,7 @@ export default function TelemetryModel() {
           />
         </Suspense>
         
-        <OrbitControls 
-          autoRotate 
-          autoRotateSpeed={0.3}
-          enableZoom={true} 
-          enablePan={true}
-          maxPolarAngle={Math.PI / 2.1} 
-          minDistance={5}
-          maxDistance={25}
-        />
+        {/* Custom 3rd person camera overrides OrbitControls */}
       </Canvas>
     </div>
   );
